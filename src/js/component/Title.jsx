@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./Title";
 export default class Title extends Component {
   titleClick(props) {
     props.updateBoard(props.loc, prop.turn);

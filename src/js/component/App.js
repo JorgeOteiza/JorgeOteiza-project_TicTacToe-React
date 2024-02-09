@@ -24,13 +24,15 @@ class App extends Component {
         </div>
         {this.state.gameBoard.map(
           function (value, i) {
-            <Title
-              key={i}
-              loc={i}
-              value={value}
-              updateBoard={this.updateBoard.bind(this)}
-              turn={this.state.turn}
-            />;
+            return (
+              <Title
+                key={i}
+                loc={i}
+                value={value}
+                updateBoard={this.updateBoard.bind(this)}
+                turn={this.state.turn}
+              />
+            );
           }.bind(this)
         )}
       </div>
