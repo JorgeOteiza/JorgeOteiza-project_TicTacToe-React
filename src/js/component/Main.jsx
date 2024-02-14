@@ -1,12 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "../styles/App.css";
+import Modal from "./Modal.jsx"; // Asegúrate de importar el Modal correcto aquí
 
-import Modal from "./component/Modal.jsx";
-import MainComponent from "./component/App.jsx"; // Importa el componente Main
-
-class Main extends React.Component {
-  // Cambia el nombre de la clase a Main o cualquier otro nombre
+class MainComponent extends React.Component {
+  // Cambia el nombre de la clase a MainComponent
   constructor(props) {
     super(props);
     this.state = {
@@ -28,15 +24,10 @@ class Main extends React.Component {
             onStartGame={() => {}}
           />
         )}
-        <App /> {/* Renderiza tu aplicación principal */}
+        {/* Aquí puedes renderizar otros componentes si es necesario */}
       </div>
     );
   }
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <MainComponent /> {/* Usa Main como tu componente principal */}
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+export default MainComponent; // Asegúrate de exportar la clase MainComponent

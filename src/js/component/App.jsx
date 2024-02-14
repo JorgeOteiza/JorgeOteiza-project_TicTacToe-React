@@ -3,6 +3,8 @@ import "../../styles/App.css";
 import Annnouncement from "./Annnouncement";
 import ResetButton from "./ResetButton";
 import Title from "./Title";
+import Modal from "./Modal";
+import Home from "./home.jsx";
 
 class App extends Component {
   constructor() {
@@ -11,8 +13,25 @@ class App extends Component {
       gameBoard: [" ", " ", " ", " ", " ", " ", " ", " ", " "],
       turn: "x",
       winner: null,
+      isModalOpen: true,
     };
   }
+  openModal() {
+    this.setState({ isModalOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false });
+  }
+
+  startGame(playerX, playerO, selectedSymbol) {
+    console.log("Jugador X:", playerX);
+    console.log("Jugador O:", playerO);
+    console.log("Símbolo seleccionado:", selectedSymbol);
+    this.setState({ modalOpen: false });
+  }
+
+  start;
 
   updateBoard(loc, player) {
     if (
@@ -106,9 +125,24 @@ class App extends Component {
       winner: null,
     });
   }
+
+  handleStartGame(playerX, playerO, selectedSymbol) {
+    this.setState({ isModalOpen: false });
+  }
+
   render() {
     return (
       <div className="container">
+        {/* Renderiza el Modal solo si isModalOpen es true */}
+        {this.state.isModalOpen && (
+          <Modal
+            isOpen={this.state.isModalOpen}
+            onClose={() => this.setState({ isModalOpen: false })}
+            onStartGame={(playerX, playerO, selectedSymbol) =>
+              this.handleStartGame(playerX, playerO, selectedSymbol)
+            }
+          />
+        )}
         <div className="menu">
           <h1>Tic Tac Toe</h1>
           <Annnouncement winner={this.state.winner} />
